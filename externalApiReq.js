@@ -1,6 +1,7 @@
 const http = require('http');
 
 const handleGetRequest = (req, res) => {
+  //creating details of the request
   const options = {
     hostname: 'static-assets.codecademy.com',
     path: '/Courses/Learn-Node/http/data.json',
@@ -9,11 +10,12 @@ const handleGetRequest = (req, res) => {
       'Content-Type': 'application/json'
     }
   }
-  
+  //creating callback to handle the reponse
   const request = http.request(options, response => {
     let data = '';
 
     // Aggregate data chunks as they come in from the API
+    //listening for the data event
     response.on('data', (chunk) => {
       data += chunk;
     });
